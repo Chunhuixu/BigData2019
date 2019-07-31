@@ -1,3 +1,7 @@
+from google.colab import drive
+drive.mount('/content/drive')
+!unzip -uq "/content/drive/My Drive/BigData/training_set.zip" -d "/content/drive/My Drive/training"
+
 import os
 import tqdm
 import matplotlib.pyplot as plt
