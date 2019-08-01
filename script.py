@@ -1,3 +1,6 @@
+####   https://www.kaggle.com/morenoh149/dlwp-5-2-convnet-binary-classification
+
+
 from google.colab import drive
 drive.mount('/content/drive')
 !unzip -uq "/content/drive/My Drive/BigData/training_set.zip" -d "/content/drive/My Drive/training"
