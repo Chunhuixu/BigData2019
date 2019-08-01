@@ -83,3 +83,39 @@ plt.plot(epochs, val_loss, 'b', label='Validation loss')
 plt.title('Training and validation loss')
 plt.legend()
 plt.show()
+
+
+
+
+
+
+ # Use data augmentation
+train_datagen = preprocessing.image.ImageDataGenerator(
+    rescale=1./255,
+    rotation_range=40,
+    width_shift_range=0.2,
+    height_shift_range=0.2,
+    shear_range=0.2,
+    zoom_range=0.2,
+    horizontal_flip=True,
+)
+train_generator = train_datagen.flow(
+    training_set,
+    train_labels,
+    batch_size=32)
+
+# do not augment validation data
+test_datagen = preprocessing.image.ImageDataGenerator(rescale=1./255)
+validation_generator = test_datagen.flow(
+    validation_set,
+    validation_labels,
+    batch_size=32)
+
+# train
+history = model.fit_generator(
+    train_generator,
+    steps_per_epoch=10,
+    epochs= 30
+    validation_data=validation_generator,
+    validation_steps=10)
+
